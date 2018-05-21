@@ -1,0 +1,63 @@
+import re
+from flask import Flask, request, make_response, json
+from redis import Redis
+from rq import Queue
+from rq.job import Job
+import logging
+from worker import send_mail, conn
+
+app = Flask(__name__)
+
+# logging configuration
+handler = logging.FileHandler('app.log', encoding='UTF-8')
+logging_format = logging.Formatter(
+        '%(asctime)s - %(levelname)s - %(filename)s - %(funcName)s - %(lineno)s - %(message)s')
+handler.setFormatter(logging_format)
+app.logger.addHandler(handler)
+
+q = Queue(connection=conn)
+
+@app.route('/', methods=['POST'])
+def get_request():
+    """
+    Get email sending request with following parameters:
+
+    subject: 
+    body:
+    recipient:
+
+    """
+    recipient = request.form.get('recipient')
+    subject = request.form.get('subject')
+    body = request.form.get('body')
+
+    if recipient is None or subject is None or body is None:
+        message = 'Email incomplete!'
+        app.logger.info(message)
+        return make_response(json.dumps({'status': 'fail', 'error': message}), '400', {})
+
+    try:
+        job = q.enqueue_call(send_mail, args=(recipient, subject, body,))
+        message = 'Add task to queue successfully, job id: {}'.format(job.get_id())
+        return make_response(json.dumps({'status': 'submitted', 
+            'info': message}), "200", {})
+    except: 
+        message = 'Connection to Redis failed.'
+        app.logger.error(message)
+        return make_response(json.dumps({'status': 'fail', 
+            'error': 'Service down'}), '500', {})
+
+
+@app.route('/check/<job_id>', methods=['GET'])
+def get_job_status(job_id):
+    job = Job.fetch(job_id, connection=conn)
+    if job.is_finished:
+        return make_response(json.dumps({'job id': job_id, 'status':
+            'finished'}), '200', {})
+    else:
+        return make_response(json.dumps({'job id': job_id, 'status':
+            'waiting'}), '200', {})
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
