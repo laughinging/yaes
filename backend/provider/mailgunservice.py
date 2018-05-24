@@ -20,8 +20,7 @@ class MailgunMail(object):
             }
 
     def __init__(self):
-        self.mailgun_api_key = "key-31fd7bc3274203d6f82f395703ddb34e"
-        # mailgun_api_key = os.environ.get('MAILGUN_API_KEY')
+        mailgun_api_key = os.environ.get('MAILGUN_API_KEY')
         if self.mailgun_api_key is None:
             message = "Please set enviroment variable MAILGUN_API_KEY"
             logger.error(message)

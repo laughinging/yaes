@@ -24,8 +24,7 @@ class SendgridMail(object):
 
     def __init__(self):
         try:
-            #sendgrid_api_key = os.environ.get('SENDGRID_API_KEY')
-            sendgrid_api_key = "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"
+            sendgrid_api_key = os.environ.get('SENDGRID_API_KEY')
             self.client = sendgrid.SendGridAPIClient(apikey=sendgrid_api_key)
         except:
             message = "SENDGRID_API_KEY error"

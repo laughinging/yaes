@@ -23,8 +23,7 @@ class SparkPostMail(object):
 
     def __init__(self):
         try:
-            #sparkpost_api_key = os.environ.get('SPARKPOST_API_KEY')
-            sparkpost_api_key = "eeec5a863952d2ea431d66805545342db2529f58"
+            sparkpost_api_key = os.environ.get('SPARKPOST_API_KEY')
             self.client = SparkPost(sparkpost_api_key)
         except:
             message = "SPARKPOST_API_KEY error"
