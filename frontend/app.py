@@ -40,7 +40,7 @@ def get_request():
         body = form.body.data
 
         try:
-            #job = q.enqueue_call(send_mail, args=(recipient, subject, body,))
+            job = q.enqueue_call(send_mail, args=(recipient, subject, body,))
             message = 'Add task to queue successfully'
             app.logger.info(message)
             return make_response(json.dumps({'status': 'submitted', 
