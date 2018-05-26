@@ -1,3 +1,7 @@
+test.py
+test_fun.py
+.key
+*.rdb
 # macos
 *.DS_Store
 
