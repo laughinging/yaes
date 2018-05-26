@@ -1,4 +1,4 @@
-from set_up import redis_conn, mail_queue, provider_updating_queue
+from set_up import redis_conn, mail_queue, provider_updating_queue, logger
 from backend.provider.sendgridservice import SendgridMail 
 from backend.provider.mailgunservice import MailgunMail 
 from backend.update_provider_pool import remove_provider
@@ -22,18 +22,19 @@ def send_mail(*args, **kwargs):
             break
 
         except ClientError as e:
+            logger.error("Client error.")
             raise InvalidRequestError(e.description) 
 
         except ProviderServerError:
+            logger.error("Provider {} not work".format(provider_name))
             provider_updating_queue.enqueue(remove_provider, provider_name)
 
     if not sent:
+        logger.error("No available mail server.")
         raise ServerError
 
 if __name__ == "__main__":
-    send_mail(
-            sender="test@test.com",
-            recipient="qianyunguo@gmail.com", 
-            subject="test", 
-            body="This is a test email."
-            )
+    send_mail(sender="test@test.com", 
+            recipient="qianyunguo@gmail.com",
+            subject="test",
+            body="This is a test email.")

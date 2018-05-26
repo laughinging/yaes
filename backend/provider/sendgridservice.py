@@ -44,9 +44,9 @@ class SendgridMail(object):
                 logger.exception(message)
                 raise ClientError(message)
 
-            elif response.status_code in (401, 500, 503):
-                message =  "SendGrid Server Error {}: {}".format(response.status_code,
-                            self.SENDGRID_ERROR[response.status_code])
+            elif e.status_code in (401, 500, 503):
+                message =  "SendGrid Server Error {}: {}".format(e.status_code,
+                            self.SENDGRID_ERROR[e.status_code])
                 logger.exception(message)
                 raise ProviderServerError(message)
 

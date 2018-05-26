@@ -22,8 +22,6 @@ if __name__ == "__main__":
     parser.add_argument('-a', nargs='*', help='provider list to add')
     args = parser.parse_args()
 
-    print('previous provider: ', redis_conn.get('provider_pool'))
-
     if args.r is not None:
         map(remove_provider, args.r)
     if args.a is not None:

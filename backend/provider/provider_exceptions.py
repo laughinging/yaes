@@ -12,5 +12,4 @@ class ProviderServerError(Exception):
         if description is None:
             description = "No further information."
         super(ProviderServerError, self).__init__(message + description)
-        self.status_code = status_code
         self.status_code = 500

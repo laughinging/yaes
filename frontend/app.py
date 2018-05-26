@@ -1,13 +1,15 @@
-import re
+import logging
 from flask import Flask, request, make_response, json, render_template
-from redis import Redis
+from set_up import redis_conn, mail_queue
+from backend.send import send_mail
+
 from rq import Queue
 from rq.job import Job
-import logging
 from worker import send_mail, conn
 from wtforms import Form, TextField
 
 class SubmitForm(Form):
+    sender = TextField('From')
     recipient = TextField('To')
     subject = TextField('Subject')
     body = TextField('Body')
@@ -15,32 +17,26 @@ class SubmitForm(Form):
 app = Flask(__name__)
 
 # logging configuration
-handler = logging.FileHandler('app.log', encoding='UTF-8')
+handler = logging.FileHandler('app.log')
 logging_format = logging.Formatter(
         '%(asctime)s - %(levelname)s - %(filename)s - %(funcName)s - %(lineno)s - %(message)s')
 handler.setFormatter(logging_format)
 app.logger.addHandler(handler)
 
-q = Queue(connection=conn)
-
 @app.route('/', methods=['GET', 'POST'])
 def get_request():
-    """
-    Get email sending request with following parameters:
 
-    subject: 
-    body:
-    recipient:
-
-    """
     if request.method == 'POST':
+        #form: from_email, to_email, subject, body
         form = SubmitForm(request.form)
+        sender = form.sender.data
         recipient = form.recipient.data
         subject = form.subject.data
         body = form.body.data
 
         try:
-            job = q.enqueue_call(send_mail, args=(recipient, subject, body,))
+            job = mail_queue.enqueue(send_mail, args=(sender, recipient, subject,
+                body,))
             message = 'Add task to queue successfully'
             app.logger.info(message)
             return make_response(json.dumps({'status': 'submitted', 
