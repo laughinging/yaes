@@ -10,4 +10,6 @@ if __name__ == '__main__':
         w = Worker(map(Queue, listen))
         w.work()
 
-
+git filter-branch --force --index-filter \
+'git rm --cached --ignore-unmatch backend/provider/sendgridservice.py' \
+--prune-empty --tag-name-filter cat -- --all
