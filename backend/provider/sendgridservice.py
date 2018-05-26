@@ -1,8 +1,9 @@
 import os
 import logging
 import sendgrid
+from set_up import sg_client
 from sendgrid.helpers.mail import *
-from provider_exceptions import *
+from backend.provider.provider_exceptions import *
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
@@ -23,13 +24,7 @@ class SendgridMail(object):
             }
 
     def __init__(self):
-        try:
-            sendgrid_api_key = os.environ.get('SENDGRID_API_KEY')
-            self.client = sendgrid.SendGridAPIClient(apikey=sendgrid_api_key)
-        except:
-            message = "SENDGRID_API_KEY error"
-            logger.error(message)
-            raise ProviderUnauthorizedError(message)
+        self.client = sg_client
 
     def send_mail(self, **kwargs):
         from_email = Email(kwargs['sender'])
@@ -43,13 +38,13 @@ class SendgridMail(object):
         try:
             response = self.client.client.mail.send.post(request_body=mail.get())
         except Exception as e:
-            if e.status_code in (400, 401, 403, 404, 405, 413, 415, 429):
+            if e.status_code in (400, 403, 404, 405, 413, 415, 429):
                 message = "SendGrid Client Error {}: {}".format(e.status_code,
                             self.SENDGRID_ERROR[e.status_code])
                 logger.exception(message)
                 raise ClientError(message)
 
-            elif response.status_code in (500, 503):
+            elif response.status_code in (401, 500, 503):
                 message =  "SendGrid Server Error {}: {}".format(response.status_code,
                             self.SENDGRID_ERROR[response.status_code])
                 logger.exception(message)
@@ -58,7 +53,7 @@ class SendgridMail(object):
 if __name__ == "__main__":
     SendgridMail().send_mail(
             sender="test@test.com",
-            recipient="test@test.com", 
+            recipient="qianyunguo@gmail.com", 
             subject="test", 
             body="This is a test email."
             )

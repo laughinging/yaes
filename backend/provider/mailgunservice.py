@@ -1,7 +1,9 @@
 import os
 import logging
 import requests
-from provider_exceptions import *
+
+from backend.provider.provider_exceptions import *
+from set_up import mailgun_api_key 
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
@@ -20,11 +22,7 @@ class MailgunMail(object):
             }
 
     def __init__(self):
-        mailgun_api_key = os.environ.get('MAILGUN_API_KEY')
-        if self.mailgun_api_key is None:
-            message = "Please set enviroment variable MAILGUN_API_KEY"
-            logger.error(message)
-            raise ProviderUnauthorizedError(message)
+        self.mailgun_api_key = mailgun_api_key
 
     def send_mail(self, **kwargs):
 
@@ -47,13 +45,13 @@ class MailgunMail(object):
                 )
 
         status_code = response.status_code
-        if status_code in (400, 401, 402, 404):
+        if status_code in (400, 402, 404):
             message = "Mailgun Client Error {}: {}".format(status_code, 
                     self.MAILGUN_ERROR[status_code])
             logger.exception(message)
             raise ClientError(message)
 
-        elif status_code in (500, 502, 503, 504):
+        elif status_code in (401, 500, 502, 503, 504):
             message = "Mailgun Server Error {}: {}".format(status_code,
                     self.MAILGUN_ERROR[status_code])
             logger.exception(message)

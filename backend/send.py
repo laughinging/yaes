@@ -1,17 +1,19 @@
-from __init__ import redis_conn, mail_queue, provider_updating_queue 
-from provider import SendgridMail, SparkPostMail
-from rq.decorators import job
-from update_provider_pool import remove_provide, add_provider
+from set_up import redis_conn, mail_queue, provider_updating_queue
+from backend.provider.sendgridservice import SendgridMail 
+from backend.provider.mailgunservice import MailgunMail 
+from backend.update_provider_pool import remove_provider
+from backend.exceptions import InvalidRequestError, ServerError
+from backend.provider.provider_exceptions import * 
 
 PROVIDER = {
-        'sendgrid': SendgridMail,
-        'sparkpost': SparkPost
+        "sendgrid": SendgridMail,
+        "mailgun": MailgunMail
         }
 
-#@job('default', connection=redis_conn)
 def send_mail(*args, **kwargs):
     provider_pool = redis_conn.get('provider_pool').split()
-    
+    provider_pool = [str(p, 'utf-8') for p in provider_pool]
+
     sent = False
     for provider_name in provider_pool:
         try:
@@ -19,8 +21,8 @@ def send_mail(*args, **kwargs):
             sent = True
             break
 
-        except ClientError:
-            raise InvalidRequestError 
+        except ClientError as e:
+            raise InvalidRequestError(e.description) 
 
         except ProviderServerError:
             provider_updating_queue.enqueue(remove_provider, provider_name)
@@ -28,15 +30,10 @@ def send_mail(*args, **kwargs):
     if not sent:
         raise ServerError
 
-
-            
-
-
-            
-
-
-
-
-
-     
-
+if __name__ == "__main__":
+    send_mail(
+            sender="test@test.com",
+            recipient="qianyunguo@gmail.com", 
+            subject="test", 
+            body="This is a test email."
+            )

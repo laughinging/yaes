@@ -1,7 +1,7 @@
 import os
 import logging
-from sparkpost import SparkPost
 from provider_exceptions import *
+from set_up import sp_client 
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
@@ -16,19 +16,13 @@ class SparkPostMail(object):
             405: "METHOD NOT ALLOWED", 
             413: "PAYLOAD TOO LARGE: The JSON payload you have included in your request is too large.", 
             415: "UNSUPPORTED MEDIA TYPE", 
-            429: "TOO MANY REQUESTS: The number of requests you have made exceeds SendGrid’s rate limitations", 
+            429: "TOO MANY REQUESTS: The number of requests you have made exceeds SendGrid's rate limitations",
             500: "SERVER UNAVAILABLE: An error occurred on a SendGrid server.", 
             503: "SERVICE NOT AVAILABLE: The SendGrid v3 Web API is not available."
             }
 
     def __init__(self):
-        try:
-            sparkpost_api_key = os.environ.get('SPARKPOST_API_KEY')
-            self.client = SparkPost(sparkpost_api_key)
-        except:
-            message = "SPARKPOST_API_KEY error"
-            logger.error(message)
-            raise ProviderUnauthorizedError(message)
+        self.client = sp_client
 
     def send_mail(self, **kwargs):
         #from_email = kwargs['sender']
