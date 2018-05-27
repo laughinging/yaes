@@ -4,8 +4,6 @@ import redis
 import requests
 
 from sendgrid import SendGridAPIClient
-from sparkpost import SparkPost
-
 from rq import Queue, Connection
 
 # logging setting
