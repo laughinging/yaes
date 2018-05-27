@@ -1,18 +1,11 @@
 import logging
-from flask import Flask, request, make_response, json, render_template
+from flask import Flask, request, make_response, jsonify, render_template, Response
 from set_up import redis_conn, mail_queue
 from backend.send import send_mail
 
 from rq import Queue
 from rq.job import Job
-from worker import send_mail, conn
-from wtforms import Form, TextField
-
-class SubmitForm(Form):
-    sender = TextField('From')
-    recipient = TextField('To')
-    subject = TextField('Subject')
-    body = TextField('Body')
+from rq.exceptions import NoSuchJobError
 
 app = Flask(__name__)
 
@@ -25,45 +18,117 @@ app.logger.addHandler(handler)
 
 @app.route('/', methods=['GET', 'POST'])
 def get_request():
-
     if request.method == 'POST':
-        #form: from_email, to_email, subject, body
-        form = SubmitForm(request.form)
-        sender = form.sender.data
-        recipient = form.recipient.data
-        subject = form.subject.data
-        body = form.body.data
+        form = request.form
+        sender = form.get('sender')
+        recipient = form.get('recipient')  
+        subject = form.get('subject')
+        body = form.get('body')
 
         try:
-            job = mail_queue.enqueue(send_mail, args=(sender, recipient, subject,
-                body,))
+            job = mail_queue.enqueue(send_mail, 
+                    sender=sender, recipient=recipient,
+                        subject=subject, body=body
+                    )
             message = 'Add task to queue successfully'
             app.logger.info(message)
-            return make_response(json.dumps({'status': 'submitted', 
-                'info': message, 'job_id': job.get_id()}), "200", {})
-            #return render_template('check.html')
+            return jsonify(
+                    {
+                        'status': 'submitted', 
+                        'info': message, 
+                        'job_id': job.get_id(), 
+                        'status_code': 200
+                        }
+                    )
 
         except: 
             message = 'Connection to Redis failed.'
             app.logger.error(message)
-            return make_response(json.dumps({'status': 'fail', 
-                'error': 'Service down'}), '500', {})
+            return jsonify(
+                    {
+                        'status': 'fail', 
+                        'error': 'Service not available, try later.', 
+                        'status_code': 500
+                        }
+                    )
         
     return render_template('index.html')
 
 
-@app.route('/check/<job_id>', methods=['GET'])
-def get_job_status(job_id):
-    job = Job.fetch(job_id, connection=conn)
-    app.logger.info('check job {}'.format(job_id))
+@app.route('/check', methods=['POST', 'GET'])
+def get_job_status():
+    print(request.form)
 
-    if job.is_finished:
-        return make_response(json.dumps({'job_id': job_id, 'status':
-            'finished'}), '200', {})
-    else:
-        
-        return make_response(json.dumps({'job_id': job_id, 'status':
-            'waiting'}), '200', {})
+    if request.method == 'POST':
+        job_id = request.form.get('job_id')
+        print(job_id)
+
+        try:
+            job = Job.fetch(job_id, connection=redis_conn)
+
+        except NoSuchJobError:
+            message = 'Invalid job id.'
+            app.logger.info(message)
+            return jsonify(
+                    {
+                        'status': 'fail',
+                        'error': message,
+                        'status_code': 400,
+                        }
+                    )
+
+        except Exception:
+            message = 'Connection to Redis failed.'
+            app.logger.error(message)
+            return jsonify(
+                    {
+                        'status': 'fail', 
+                        'error': 'Checking service not available, try later.', 
+                        'status_code': 501
+                        }
+                    )
+
+
+        app.logger.info('check job {}'.format(job_id))
+        if job.is_finished:
+            return jsonify(
+                    {
+                        'job_id': job_id, 
+                        'status': 'finished', 
+                        'status_code': 200
+                        }
+                    )
+
+        elif job.is_queued:
+            return jsonify(
+                    {
+                        'job_id': job_id, 
+                        'status': 'waiting',
+                        'status_code': 201
+                        }
+                    )
+
+        elif job.is_started:
+            return jsonify(
+                    {
+                        'job_id': job_id, 
+                        'status': 'started',
+                        'status_code': 202
+                        }
+                    )
+        elif job.is_failed:
+            exc_info = job.exc_info
+            message = exc_info.split('\n')[-2].split(': ')[-1]
+            return jsonify(
+                    {
+                        'job_id': job_id, 
+                        'status': 'failed',
+                        'reason': message,
+                        'status_code': 400,
+                        }
+                    )
+
+    return render_template('index.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

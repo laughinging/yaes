@@ -1,87 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
-        <meta charset="utf-8">
-        <title>yaes</title>
-        <link href="../static/bootstrap.min.css" rel="stylesheet">       
-        <!--[if lt IE 9]>
-          <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-    </head>
-      
-    <body >
-        
- <div class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">yaes</a>
-    </div>
-    <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Submission</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#API">Contact</a></li>
-      </ul>
-    </div><!--/.nav-collapse -->
-  </div>
-</div>
-
-<main class="container">
-  <div class="row">
-    <!--left-->
-   <div class="col-md-3 block-left">
-      <!--service status-->
-      <div class="panel panel-default">
-        <div class="panel-heading">Service Status</div>
-        <div class="panel-body">
-          <ul class="list-group">
-            <li class="list-group-item info-row">
-              <div class="info-subtitle">Waiting Queue</div>
-              <div class="info-value" id="info-waiting_updated">0</div>
-            </li>
-            <li class="list-group-item info-row">
-              <div class="info-subtitle">Failed Queue</div>
-              <div class="info-value" id="info-latest_block_num">0</div>
-            </li>
-            <li class="list-group-item info-row info-row-divider">
-              <div class="info-subtitle">Available Email Provider</div>
-              <div class="info-value" id="info-available-email-service">0</div>
-            </li>
-            <li class="list-group-item info-row">
-              <div class="info-subtitle">Last Provider Check</div>
-              <div class="info-value">10min</div>
-            </li>       
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>yaes</title>
+    <link href="../static/bootstrap.min.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <script type=text/JavaScript>
+    function submitForm(){
+              $.ajax({
+                 type:'post',
+                 url:'http://localhost:5000',
+                 data:$("#submit").serialize(),
+                 cache:false,
+                 dataType:'text',
+                 success:function(data){
+                     alert(data)
+                 if(data.status == 'submitted')
+                     alert("Email submitted.");
+                 else
+                     alert("Service down, submit later.");
+                 }
+             });
+         }
+  </script>
+  <body >
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">yaes</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Submission</a></li>
+            <li><a href="#about">About</a></li>
           </ul>
         </div>
+        <!--/.nav-collapse -->
       </div>
-     </div><!--/left-->
-    <!--right-->
-    <div class="col-md-9">
-  	<div class="text-center">
-    <h2>Email Submission</h2>
-  </div>
-      <form role="form">
- <div class="form-group col-md-12">
-   <label for="FromEmail1">To</label>
-   <input type="email" class="form-control" id="FromEmail1" placeholder="Enter email">
-   <label for="ToEmail1">Subject</label>
-   <input type="email" class="form-control" id="ToEmail1" placeholder="Enter subject">
-   <label for="Textarea">Content</label>
-   <textarea type="email" class="col-md-12" placeholder="Enter email content"> </textarea>
-  </div>
- <button type="submit" class="btn btn-default col-md-3 col-md-offset-2">Submit</button>
- <button type="reset" class="btn btn-default col-md-3 col-md-offset-2">Reset</button>
-</form>
-  </div><!--right-->
-  </div>
-</div><!-- /.container -->       
-        <script type='text/javascript' src="/jquery.min.js"></script>
-        <script type='text/javascript' src="../static/bootstrap.min.js"></script>
-    </body>
+    </div>
+    <main class="container">
+    <div class="row">
+       <!--left-->
+      <div class="col-md-6">
+        <div class="text-center">
+            
+          <h3>Email Submission</h3>
+        </div>
+        <form role="form" action="/" method="post">
+          <div class="form-group col-md-12">
+            <label for="FromEmail1">From</label>
+            <input type="email" class="form-control" name="sender" placeholder="Enter email">
+            <label for="FromEmail1">To</label>
+            <input type="email" class="form-control" name="recipient" placeholder="Enter email">
+            <label for="ToEmail1">Subject</label>
+            <input type="text" class="form-control" name="subject" placeholder="Enter subject">
+            <label for="Textarea">Content</label>
+            <textarea type="text" class="col-md-12" name="body" placeholder="body"> </textarea>
+          </div>
+          <button type="submit" value="Submit" class="btn btn-default col-md-3 col-md-offset-2">Submit</button>
+          <button type="reset" value="Reset" class="btn btn-default col-md-3 col-md-offset-2">Reset</button>
+        </form>
+      </div>
+      <!--right-->
+      <div class="col-md-6">
+        <div class="text-center">
+          <h3>Check Job Status</h3>
+        </div>
+        <form role="form" action="/check" method="post">
+          <div class="form-group col-md-12">
+            <label for="job_id">Job Id</label>
+            <input type="text" class="form-control" name="job_id" placeholder="Enter job id">
+          </div>
+          <button type="submit" value="Submit" class="btn btn-default col-md-3 col-md-offset-2">Submit</button>
+          <button type="reset" value="Reset" class="btn btn-default col-md-3 col-md-offset-2">Reset</button>
+        </form>
+      </div>
+    </div>
+    </div><!-- /.container -->
+    <script type='text/javascript' src="../static/jquery.min.js"></script>
+    <script type='text/javascript' src="../static/bootstrap.min.js"></script>
+    <script type="text/JavaScript">
+      function getStatus(){
+           $.get("/status",function(data,status){
+             $("info-waiting_updated").html() = data.info-waiting_updated;
+             $("info-latest_block_num").html() = data.info-latest_block_num;
+             $("info-available-email-service").html() = data.info-available-email-service;
+             $("info-last-provider-check").html() = data.info-last-provider-check;
+           });
+        };
+      $(document).ready(function(){
+          setInterval(getStatus(), 1000);
+          });
+      
+    </script>
+  </body>
 </html>

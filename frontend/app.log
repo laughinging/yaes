@@ -1,0 +1,108 @@
+2018-05-27 01:36:18,630 - INFO - app.py - get_request - 40 - Add task to queue successfully
+2018-05-27 01:37:20,500 - INFO - app.py - get_request - 40 - Add task to queue successfully
+2018-05-27 01:37:20,510 - INFO - app.py - get_job_status - 57 - check job 92ea6f1e-8ba3-4db8-94e6-29ab3a04bfa0
+2018-05-27 01:37:22,521 - INFO - app.py - get_job_status - 57 - check job 92ea6f1e-8ba3-4db8-94e6-29ab3a04bfa0
+2018-05-27 01:38:35,993 - INFO - app.py - get_request - 40 - Add task to queue successfully
+2018-05-27 01:38:35,999 - INFO - app.py - get_job_status - 57 - check job ce510fd9-ef7c-4cae-b912-949e4c3fee10
+2018-05-27 01:38:38,011 - INFO - app.py - get_job_status - 57 - check job ce510fd9-ef7c-4cae-b912-949e4c3fee10
+2018-05-27 01:38:58,239 - INFO - app.py - get_request - 40 - Add task to queue successfully
+2018-05-27 01:38:58,244 - INFO - app.py - get_job_status - 57 - check job 6f0b9627-ff28-4520-a2dc-f07ee3c945c0
+2018-05-27 01:39:00,255 - INFO - app.py - get_job_status - 57 - check job 6f0b9627-ff28-4520-a2dc-f07ee3c945c0
+2018-05-27 01:42:19,601 - INFO - app.py - get_request - 40 - Add task to queue successfully
+2018-05-27 01:42:19,609 - INFO - app.py - get_job_status - 57 - check job 66ca6750-29e0-4a18-a47b-caec15df10ef
+2018-05-27 01:42:21,621 - INFO - app.py - get_job_status - 57 - check job 66ca6750-29e0-4a18-a47b-caec15df10ef
+2018-05-27 01:43:37,705 - INFO - app.py - get_request - 40 - Add task to queue successfully
+2018-05-27 01:43:37,714 - INFO - app.py - get_job_status - 57 - check job f8154b07-deb7-45a1-b6a6-97b243cff962
+2018-05-27 01:43:39,725 - INFO - app.py - get_job_status - 57 - check job f8154b07-deb7-45a1-b6a6-97b243cff962
+2018-05-27 01:54:47,400 - INFO - app.py - get_request - 43 - Add task to queue successfully
+2018-05-27 01:54:47,409 - INFO - app.py - get_job_status - 60 - check job 21dd637d-7427-47f8-b3cf-38b4fe8b5654
+2018-05-27 01:54:49,420 - INFO - app.py - get_job_status - 60 - check job 21dd637d-7427-47f8-b3cf-38b4fe8b5654
+2018-05-27 02:01:24,830 - INFO - app.py - get_request - 42 - Add task to queue successfully
+2018-05-27 02:01:24,840 - INFO - app.py - get_job_status - 59 - check job c254b177-9d58-4a52-90e1-5f00bd6f8971
+2018-05-27 02:01:26,850 - INFO - app.py - get_job_status - 59 - check job c254b177-9d58-4a52-90e1-5f00bd6f8971
+2018-05-27 02:02:01,733 - INFO - app.py - get_request - 42 - Add task to queue successfully
+2018-05-27 02:02:01,739 - INFO - app.py - get_job_status - 59 - check job 1641f8c3-f1bd-47f7-90eb-fdbf76d3491a
+2018-05-27 02:02:03,748 - INFO - app.py - get_job_status - 59 - check job 1641f8c3-f1bd-47f7-90eb-fdbf76d3491a
+2018-05-27 02:06:54,068 - INFO - app.py - get_request - 42 - Add task to queue successfully
+2018-05-27 02:06:54,076 - INFO - app.py - get_job_status - 59 - check job 708c74a7-950d-4437-a94c-00e751b43af3
+2018-05-27 02:06:56,084 - INFO - app.py - get_job_status - 59 - check job 708c74a7-950d-4437-a94c-00e751b43af3
+2018-05-27 02:09:16,069 - INFO - app.py - get_request - 42 - Add task to queue successfully
+2018-05-27 02:09:16,077 - INFO - app.py - get_job_status - 59 - check job 86b97801-bbf3-4869-81ed-d4361696c66d
+2018-05-27 02:09:18,086 - INFO - app.py - get_job_status - 59 - check job 86b97801-bbf3-4869-81ed-d4361696c66d
+2018-05-27 02:12:02,749 - INFO - app.py - get_request - 43 - Add task to queue successfully
+2018-05-27 02:12:02,758 - INFO - app.py - get_job_status - 60 - check job 3fd568e3-d5f7-4da7-ae38-08fd09240092
+2018-05-27 02:12:04,770 - INFO - app.py - get_job_status - 60 - check job 3fd568e3-d5f7-4da7-ae38-08fd09240092
+2018-05-27 02:13:24,514 - INFO - app.py - get_request - 42 - Add task to queue successfully
+2018-05-27 02:13:33,562 - INFO - app.py - get_request - 43 - Add task to queue successfully
+2018-05-27 02:13:33,570 - INFO - app.py - get_job_status - 60 - check job ddda567a-9e41-4b4a-8282-b74fd621ceac
+2018-05-27 02:13:35,579 - INFO - app.py - get_job_status - 60 - check job ddda567a-9e41-4b4a-8282-b74fd621ceac
+2018-05-27 11:29:07,786 - INFO - app.py - get_request - 43 - Add task to queue successfully
+2018-05-27 11:29:07,797 - INFO - app.py - get_job_status - 60 - check job 9133bb96-0db8-4f52-98c6-ae344ba27028
+2018-05-27 11:29:09,809 - INFO - app.py - get_job_status - 60 - check job 9133bb96-0db8-4f52-98c6-ae344ba27028
+2018-05-27 11:31:27,319 - INFO - app.py - get_request - 43 - Add task to queue successfully
+2018-05-27 11:31:27,328 - INFO - app.py - get_job_status - 60 - check job cc5f277a-df69-4ef5-bdb1-e27c35302832
+2018-05-27 11:31:29,334 - INFO - app.py - get_job_status - 60 - check job cc5f277a-df69-4ef5-bdb1-e27c35302832
+2018-05-27 11:32:34,322 - INFO - app.py - get_request - 43 - Add task to queue successfully
+2018-05-27 11:32:34,330 - INFO - app.py - get_job_status - 60 - check job e445e847-8e65-4269-9e44-4636e93c798b
+2018-05-27 11:32:36,338 - INFO - app.py - get_job_status - 60 - check job e445e847-8e65-4269-9e44-4636e93c798b
+2018-05-27 11:50:28,319 - INFO - app.py - get_request - 45 - Add task to queue successfully
+2018-05-27 11:52:40,707 - INFO - app.py - get_request - 44 - Add task to queue successfully
+2018-05-27 12:19:09,704 - INFO - app.py - get_request - 44 - Add task to queue successfully
+2018-05-27 12:22:15,683 - INFO - app.py - get_request - 46 - Add task to queue successfully
+2018-05-27 12:23:53,405 - INFO - app.py - get_request - 37 - Add task to queue successfully
+2018-05-27 12:42:04,578 - INFO - app.py - get_request - 35 - Add task to queue successfully
+2018-05-27 12:43:04,531 - INFO - app.py - get_request - 35 - Add task to queue successfully
+2018-05-27 12:52:10,606 - INFO - app.py - get_request - 35 - Add task to queue successfully
+2018-05-27 12:59:35,153 - INFO - app.py - get_request - 35 - Add task to queue successfully
+2018-05-27 13:06:39,146 - INFO - app.py - get_request - 35 - Add task to queue successfully
+2018-05-27 13:06:50,797 - ERROR - app.py - get_job_status - 66 - Connection to Redis failed.
+2018-05-27 13:08:01,316 - ERROR - app.py - get_job_status - 67 - Connection to Redis failed.
+2018-05-27 13:08:36,745 - INFO - app.py - get_request - 35 - Add task to queue successfully
+2018-05-27 13:08:52,755 - INFO - app.py - get_request - 35 - Add task to queue successfully
+2018-05-27 13:11:10,671 - ERROR - app.py - get_job_status - 67 - Connection to Redis failed.
+2018-05-27 13:11:53,479 - ERROR - app.py - get_job_status - 67 - Connection to Redis failed.
+2018-05-27 13:12:23,480 - ERROR - app.py - get_job_status - 67 - Connection to Redis failed.
+2018-05-27 13:12:58,937 - ERROR - app.py - get_job_status - 67 - Connection to Redis failed.
+2018-05-27 13:13:29,806 - ERROR - app.py - get_job_status - 67 - Connection to Redis failed.
+2018-05-27 13:14:23,084 - ERROR - app.py - get_job_status - 67 - Connection to Redis failed.
+2018-05-27 13:20:24,819 - ERROR - app.py - get_job_status - 65 - Connection to Redis failed.
+2018-05-27 13:21:01,751 - INFO - app.py - get_request - 33 - Add task to queue successfully
+2018-05-27 13:26:11,907 - INFO - app.py - get_request - 33 - Add task to queue successfully
+2018-05-27 13:26:11,908 - ERROR - app.py - get_request - 45 - Connection to Redis failed.
+2018-05-27 13:26:34,489 - INFO - app.py - get_request - 33 - Add task to queue successfully
+2018-05-27 13:26:34,489 - ERROR - app.py - get_request - 45 - Connection to Redis failed.
+2018-05-27 13:27:25,083 - INFO - app.py - get_request - 33 - Add task to queue successfully
+2018-05-27 13:28:27,608 - INFO - app.py - get_request - 33 - Add task to queue successfully
+2018-05-27 13:29:50,646 - INFO - app.py - get_request - 33 - Add task to queue successfully
+2018-05-27 13:31:40,168 - INFO - app.py - get_request - 33 - Add task to queue successfully
+2018-05-27 13:32:48,003 - ERROR - app.py - get_job_status - 79 - Connection to Redis failed.
+2018-05-27 13:38:14,842 - INFO - app.py - get_request - 33 - Add task to queue successfully
+2018-05-27 13:38:36,506 - INFO - app.py - get_request - 33 - Add task to queue successfully
+2018-05-27 13:43:33,173 - INFO - app.py - get_request - 33 - Add task to queue successfully
+2018-05-27 13:43:51,787 - INFO - app.py - get_request - 33 - Add task to queue successfully
+2018-05-27 13:46:13,355 - INFO - app.py - get_request - 33 - Add task to queue successfully
+2018-05-27 13:50:06,495 - INFO - app.py - get_request - 33 - Add task to queue successfully
+2018-05-27 13:51:16,100 - INFO - app.py - get_request - 33 - Add task to queue successfully
+2018-05-27 13:51:38,226 - INFO - app.py - get_request - 33 - Add task to queue successfully
+2018-05-27 13:52:57,214 - INFO - app.py - get_request - 33 - Add task to queue successfully
+2018-05-27 13:53:13,029 - INFO - app.py - get_request - 33 - Add task to queue successfully
+2018-05-27 13:53:57,837 - INFO - app.py - get_request - 33 - Add task to queue successfully
+2018-05-27 13:54:14,583 - INFO - app.py - get_request - 33 - Add task to queue successfully
+2018-05-27 13:55:16,098 - INFO - app.py - get_request - 33 - Add task to queue successfully
+2018-05-27 14:00:29,241 - INFO - app.py - get_request - 33 - Add task to queue successfully
+2018-05-27 14:04:31,198 - INFO - app.py - get_request - 33 - Add task to queue successfully
+2018-05-27 14:04:49,950 - INFO - app.py - get_request - 33 - Add task to queue successfully
+2018-05-27 14:07:21,675 - INFO - app.py - get_request - 33 - Add task to queue successfully
+2018-05-27 14:07:21,676 - ERROR - app.py - get_request - 46 - Connection to Redis failed.
+2018-05-27 14:10:27,463 - INFO - app.py - get_request - 33 - Add task to queue successfully
+2018-05-27 14:18:55,275 - INFO - app.py - get_request - 33 - Add task to queue successfully
+2018-05-27 14:19:34,478 - INFO - app.py - get_request - 33 - Add task to queue successfully
+2018-05-27 14:43:56,467 - INFO - app.py - get_request - 33 - Add task to queue successfully
+2018-05-27 15:08:58,241 - INFO - app.py - get_request - 33 - Add task to queue successfully
+2018-05-27 15:09:12,945 - INFO - app.py - get_request - 33 - Add task to queue successfully
+2018-05-27 15:09:57,895 - INFO - app.py - get_request - 33 - Add task to queue successfully
+2018-05-27 15:09:57,901 - ERROR - app.py - get_job_status - 88 - Connection to Redis failed.
+2018-05-27 15:09:59,912 - ERROR - app.py - get_job_status - 88 - Connection to Redis failed.
+2018-05-27 15:12:40,961 - INFO - app.py - get_request - 33 - Add task to queue successfully
+2018-05-27 15:12:40,967 - ERROR - app.py - get_job_status - 88 - Connection to Redis failed.
+2018-05-27 15:12:42,975 - ERROR - app.py - get_job_status - 88 - Connection to Redis failed.

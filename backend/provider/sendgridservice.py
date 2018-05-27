@@ -27,6 +27,9 @@ class SendgridMail(object):
         self.client = sg_client
 
     def send_mail(self, **kwargs):
+        print("\n\n=====\n\n")
+        print(kwargs)
+        print("\n\n=====\n\n")
         from_email = Email(kwargs['sender'])
         to_email = Email(kwargs['recipient'])
         subject = kwargs['subject']

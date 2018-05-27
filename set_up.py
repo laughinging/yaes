@@ -6,7 +6,6 @@ import requests
 from sendgrid import SendGridAPIClient
 from sparkpost import SparkPost
 
-
 from rq import Queue, Connection
 
 # logging setting
@@ -29,11 +28,6 @@ except redis.exceptions.ConnectionError:
     message = "Redis server isn't running."
     logger.error("Redis server isn't running")
     raise RuntimeError(message)
-
-
-# set up default mail service provider in redis
-provider_pool = ['sendgrid', 'mailgun']
-redis_conn.set('provider_pool', ' '.join(provider_pool))
 
 # set up mail service provider - SendGrid
 sendgrid_api_key = os.environ.get('SENDGRID_API_KEY')
@@ -58,3 +52,10 @@ if mailgun_api_key is None:
 # set up mail queue and updating queue
 mail_queue = Queue('default', connection=redis_conn)
 provider_updating_queue = Queue('high', connection=redis_conn)
+
+if __name__ == "__main__":
+    # set up default mail service provider in redis
+    provider_pool = ['sendgrid', 'mailgun']
+    redis_conn.set('provider_pool', ' '.join(provider_pool))
+
+
