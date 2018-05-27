@@ -72,7 +72,7 @@ def get_job_status():
             return jsonify(
                     {
                         'status': 'fail',
-                        'error': message,
+                        'info': message,
                         'status_code': 400,
                         }
                     )
@@ -83,7 +83,7 @@ def get_job_status():
             return jsonify(
                     {
                         'status': 'fail', 
-                        'error': 'Checking service not available, try later.', 
+                        'info': 'Checking service not available, try later.', 
                         'status_code': 501
                         }
                     )
@@ -95,6 +95,7 @@ def get_job_status():
                     {
                         'job_id': job_id, 
                         'status': 'finished', 
+                        'info': 'Email sent successfully.',
                         'status_code': 200
                         }
                     )
@@ -104,6 +105,7 @@ def get_job_status():
                     {
                         'job_id': job_id, 
                         'status': 'waiting',
+                        'info': 'Job in queue, check status later.',
                         'status_code': 201
                         }
                     )
@@ -113,6 +115,7 @@ def get_job_status():
                     {
                         'job_id': job_id, 
                         'status': 'started',
+                        'info': 'Email being sent, check status later.',
                         'status_code': 202
                         }
                     )

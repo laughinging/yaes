@@ -13,20 +13,34 @@
     function submitForm(){
               $.ajax({
                  type:'post',
-                 url:'http://localhost:5000',
+                 url:'/',
                  data:$("#submit").serialize(),
-                 cache:false,
-                 dataType:'text',
+                 dataType:'json',
                  success:function(data){
-                     alert(data)
                  if(data.status == 'submitted')
-                     alert("Email submitted.");
+                     alert("Email submitted.\nJob id: "+data.job_id);
                  else
                      alert("Service down, submit later.");
-                 }
+                 },
              });
          }
   </script>
+
+  <script type=text/JavaScript>
+    function checkJob(){
+              $.ajax({
+                 type:'post',
+                 url:'/check',
+                 data:$("#submit").serialize(),
+                 dataType:'json',
+                 success:function(data){
+                     alert(data.info)
+                 },
+             });
+         }
+  </script>
+
+
   <body >
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
@@ -54,7 +68,7 @@
             
           <h3>Email Submission</h3>
         </div>
-        <form role="form" action="/" method="post">
+        <form role="form">
           <div class="form-group col-md-12">
             <label for="FromEmail1">From</label>
             <input type="email" class="form-control" name="sender" placeholder="Enter email">
@@ -65,7 +79,7 @@
             <label for="Textarea">Content</label>
             <textarea type="text" class="col-md-12" name="body" placeholder="body"> </textarea>
           </div>
-          <button type="submit" value="Submit" class="btn btn-default col-md-3 col-md-offset-2">Submit</button>
+          <button type="button" value="Submit" class="btn btn-default col-md-3 col-md-offset-2" onclick="submitForm();">Submit</button>
           <button type="reset" value="Reset" class="btn btn-default col-md-3 col-md-offset-2">Reset</button>
         </form>
       </div>
@@ -79,7 +93,8 @@
             <label for="job_id">Job Id</label>
             <input type="text" class="form-control" name="job_id" placeholder="Enter job id">
           </div>
-          <button type="submit" value="Submit" class="btn btn-default col-md-3 col-md-offset-2">Submit</button>
+          <button type="button" value="Submit" class="btn btn-default col-md-3 col-md-offset-2" onclick="checkJob();">Submit</button>
+
           <button type="reset" value="Reset" class="btn btn-default col-md-3 col-md-offset-2">Reset</button>
         </form>
       </div>
@@ -87,19 +102,5 @@
     </div><!-- /.container -->
     <script type='text/javascript' src="../static/jquery.min.js"></script>
     <script type='text/javascript' src="../static/bootstrap.min.js"></script>
-    <script type="text/JavaScript">
-      function getStatus(){
-           $.get("/status",function(data,status){
-             $("info-waiting_updated").html() = data.info-waiting_updated;
-             $("info-latest_block_num").html() = data.info-latest_block_num;
-             $("info-available-email-service").html() = data.info-available-email-service;
-             $("info-last-provider-check").html() = data.info-last-provider-check;
-           });
-        };
-      $(document).ready(function(){
-          setInterval(getStatus(), 1000);
-          });
-      
-    </script>
   </body>
 </html>
