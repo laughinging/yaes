@@ -4,6 +4,24 @@ server](https://github.com/uber/coding-challenge-tools/blob/master/coding_challe
 
 Service available at [35.204.58.232:8888](http://35.204.58.232:8888/)
 
+## Content
+
+* [Overview](#overview)
+* [Quick start](#quick-start)
+   * [Use the email service](#use-the-email-service)
+   * [Set up your own yaes](#set-up-your-own-yaes)
+      * [Requirements](#requirements)
+      * [Start yaes](#start-yaes)
+      * [Monitor](#monitor)
+* [Design](#design)
+   * [Job and Worker](#job-and-worker)
+      * [Send email](#send-email)
+      * [Update provider pool](#update-provider-pool)
+   * [Queue](#queue)
+* [Test](#test)
+* [If I had more time, I would have ...](#if-i-had-more-time-i-would-have-)
+* [About the project](#about-the-project)
+
 ## Overview 
 yaes accepts email information from clients and sends emails. yaes uses multiple
 email service provider as backends. If one of the providers goes down, email
@@ -32,24 +50,6 @@ requests are passed to remaining providers without affecting clients.
 - **Flexibility:** If one server provider is currently unavailable, it is removed
   from the provider pool. The add and remove API of provider pool are provided
   as well.
-
-## Table of Contents
-
-[Quick start](#quick_start)
-- [Use the email service](#Use_the_email_service)
-- [Set up your own yaes](#Set_up_your_own_yaes)
-
-[Design](#Design)
-- [Job and Worker](#Job_and_Worker)
-- [Queue](#Queue)
-
-[Test](#Test)
-
-[Todo](#If_I_had_more_time,_I_would_have_...)
-
-[About me](#About_me)
-
-
 
 
 ## Quick start
