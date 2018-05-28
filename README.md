@@ -257,22 +257,22 @@ backend
 
 ## If I had more time, I would have implemented...
 
-- **automatically check mail format: ** 
+- **automatically check mail format:** 
 Now all the HTTP POST requests are submitted to the task queue and later
 processes by at least one service provider. It would be efficient if malformed
 emails can be filtered out at the very beginning. Currently, I only use an 'email'
 label in `index.html` to check wether the email address is valid.
 
-- **automatically add/remove service provider: ** 
+- **automatically add/remove service provider:** 
 It is possible to use timed varification to check the service provider status
 and add/remove automatically.
 
-- **automatically deal with failed jobs: **
+- **automatically deal with failed jobs:**
 The failed jobs are stored in a 'failed' queue with error type. It is possible
 to deal with these jobs according to their error types, i.e, re-try those jobs
 that are failed due to temperary server errors, discard those with client errors.
 
-- **more tests: **
+- **more tests:**
 I tried to implement unit tests for most of the cases. However, I have to test
 manually for cases when redis server is not working. I didn't find a good way to
 intergrate redis server status in python unittests. 
