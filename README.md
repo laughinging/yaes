@@ -35,9 +35,9 @@ requests are passed to remaining providers without affecting clients.
 
 ## Table of Contents
 
-[Quick start](#Quick start)
-- [Use the email service](#Use the email service)
-- [Set up your own yaes](Set up your own yaes)
+[Quick start](#Quick_start)
+- [Use the email service](#Use_the_email_service)
+- [Set up your own yaes](Set_up_your_own_yaes)
 
 [Design](#Design)
 - [Job and Worker](#Job_and_Worker)
@@ -45,9 +45,9 @@ requests are passed to remaining providers without affecting clients.
 
 [Test](#Test)
 
-[Todo](#If I had more time, I would have ...)
+[Todo](#If_I_had_more_time,_I_would_have_...)
 
-[About me](#About me)
+[About me](#About_me)
 
 
 
