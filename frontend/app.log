@@ -198,3 +198,9 @@
 2018-05-28 23:37:23,747 - INFO - app.py - get_job_status - 90 - check job bde3b1fb-94ed-420d-8e99-67d9e601e831
 2018-05-28 23:37:23,750 - INFO - app.py - get_request - 34 - Add task to queue successfully
 2018-05-28 23:37:23,752 - INFO - app.py - get_request - 34 - Add task to queue successfully
+2018-05-29 01:30:05,965 - INFO - app.py - get_request - 34 - Add task to queue successfully
+2018-05-29 01:30:11,597 - INFO - app.py - get_job_status - 90 - check job 8600c36a-1f66-4d5c-b220-d7d942d72d9c
+2018-05-29 01:30:16,611 - INFO - app.py - get_job_status - 90 - check job 8600c36a-1f66-4d5c-b220-d7d942d72d9c
+2018-05-29 01:30:25,818 - INFO - app.py - get_job_status - 90 - check job 8600c36a-1f66-4d5c-b220-d7d942d72d9c
+2018-05-29 01:30:27,910 - INFO - app.py - get_job_status - 90 - check job 8600c36a-1f66-4d5c-b220-d7d942d72d9c
+2018-05-29 01:30:43,542 - INFO - app.py - get_job_status - 90 - check job 8600c36a-1f66-4d5c-b220-d7d942d72d9c

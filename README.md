@@ -136,6 +136,12 @@ python frontend/app.py
 python backend/worker.py
 ```
 
+- run test
+```
+python frontend/test_app.py
+python backend/test_send.py
+```
+
 #### Monitor 
 rq-dashboard is a web frontend to monitor redis queue, jobs and workers. Simply
 start with:
@@ -224,9 +230,11 @@ yaes listens to two task queues with different priorities.
 As for a real world application, it is possible to intergrate other tasks.
 
 ## Test
-Tests are implemented for most of the units - whether the unit returns correct
-result or raise proper error. Briefly, I have checked the following cases. 
+Tests are implemented for most of the function units - whether the unit returns
+correct result or raise proper error. Please check ```test_app.py``` and
+```test_send.py``` for details.
 
+Briefly, I have checked the following cases. 
 
 frontend
  * valid email address?
@@ -238,9 +246,9 @@ frontend
 backend
  * redis server working?
     * No - raise server error
-    * Yes - worker setted ?
+    * Yes - worker on?
         * No - emails are waiting in the queue
-        * Yes - emails handled by workers. sent successful?
+        * Yes - emails handled by workers. email sent successfully?
             * Yes - mark job as finished. 
             * No - error due to client?
                 * Yes - mark job as failed with client error.
@@ -264,7 +272,10 @@ The failed jobs are stored in a 'failed' queue with error type. It is possible
 to deal with these jobs according to their error types, i.e, re-try those jobs
 that are failed due to temperary server errors, discard those with client errors.
 
-- **automated tests**
+- **more tests**
+I tried to implement unit tests for most of the cases. However, I have to test
+manually for cases when redis server is not working. I didn't find a good way to
+intergrate redis server status in python unittests. 
 
 ## About the project
 

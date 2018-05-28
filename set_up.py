@@ -55,5 +55,3 @@ if __name__ == "__main__":
     # set up default mail service provider in redis
     provider_pool = ['sendgrid', 'mailgun']
     redis_conn.set('provider_pool', ' '.join(provider_pool))
-
-
