@@ -23,7 +23,7 @@ def send_mail(*args, **kwargs):
 
         except ClientError as e:
             logger.error("Client error.")
-            raise InvalidRequestError(e.description) 
+            raise InvalidRequestError(e.args[0]) 
 
         except ProviderServerError:
             logger.error("Provider {} not work".format(provider_name))

@@ -24,7 +24,7 @@ try:
     redis_conn.ping()
 except redis.exceptions.ConnectionError:
     message = "Redis server isn't running."
-    logger.error("Redis server isn't running")
+    logger.error(message)
     raise RuntimeError(message)
 
 # set up mail service provider - SendGrid

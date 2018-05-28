@@ -57,11 +57,9 @@ def get_request():
 
 @app.route('/check', methods=['POST', 'GET'])
 def get_job_status():
-    print(request.form)
 
     if request.method == 'POST':
         job_id = request.form.get('job_id')
-        print(job_id)
 
         try:
             job = Job.fetch(job_id, connection=redis_conn)
