@@ -28,10 +28,13 @@
 
   <script type=text/JavaScript>
     function checkJob(){
+              var sendInfo = {
+              job_id: $("#job_id").val(),
+            };
               $.ajax({
                  type:'post',
                  url:'/check',
-                 data:$("#submit").serialize(),
+                 data:sendInfo ,
                  dataType:'json',
                  success:function(data){
                      alert(data.info)
@@ -42,7 +45,7 @@
 
 
   <body >
-    <div class="navbar navbar-inverse navbar-fixed-top">
+   <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -54,30 +57,29 @@
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Submission</a></li>
-            <li><a href="#about">About</a></li>
           </ul>
         </div>
         <!--/.nav-collapse -->
       </div>
     </div>
     <main class="container">
-    <div class="row">
+     <div class="row">
        <!--left-->
       <div class="col-md-6">
         <div class="text-center">
             
           <h3>Email Submission</h3>
         </div>
-        <form role="form">
+        <form role="form" id="submit">
           <div class="form-group col-md-12">
             <label for="FromEmail1">From</label>
-            <input type="email" class="form-control" name="sender" placeholder="Enter email">
+            <input type="email" class="form-control" name="sender" id="sender" placeholder="Enter email">
             <label for="FromEmail1">To</label>
-            <input type="email" class="form-control" name="recipient" placeholder="Enter email">
+            <input type="email" class="form-control" name="recipient" id="recipient" placeholder="Enter email">
             <label for="ToEmail1">Subject</label>
-            <input type="text" class="form-control" name="subject" placeholder="Enter subject">
+            <input type="text" class="form-control" name="subject" id="subject" placeholder="Enter subject">
             <label for="Textarea">Content</label>
-            <textarea type="text" class="col-md-12" name="body" placeholder="body"> </textarea>
+            <textarea type="text" class="col-md-12" name="body" id="body" placeholder="body"> </textarea>
           </div>
           <button type="button" value="Submit" class="btn btn-default col-md-3 col-md-offset-2" onclick="submitForm();">Submit</button>
           <button type="reset" value="Reset" class="btn btn-default col-md-3 col-md-offset-2">Reset</button>
@@ -91,7 +93,7 @@
         <form role="form" action="/check" method="post">
           <div class="form-group col-md-12">
             <label for="job_id">Job Id</label>
-            <input type="text" class="form-control" name="job_id" placeholder="Enter job id">
+            <input type="text" class="form-control" name="job_id" id="job_id" placeholder="Enter job id">
           </div>
           <button type="button" value="Submit" class="btn btn-default col-md-3 col-md-offset-2" onclick="checkJob();">Submit</button>
 
@@ -100,6 +102,16 @@
       </div>
     </div>
     </div><!-- /.container -->
+      <div class="footer ">
+
+        <hr>
+        <div class="row footer-bottom">
+            <ul class="list-inline text-center">
+                <li>Written by Qianyun Guo &copy; Uber coding challenge - Email Service; <a href="https://github.com/laughinging/yaes">Github</a></li>
+            </ul>
+        </div>
+    </div>
+</div><!-- /.footer -->
     <script type='text/javascript' src="../static/jquery.min.js"></script>
     <script type='text/javascript' src="../static/bootstrap.min.js"></script>
   </body>

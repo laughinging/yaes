@@ -127,7 +127,7 @@ def get_job_status():
                         'job_id': job_id, 
                         'status': 'failed',
                         'reason': message,
-                        'status_code': 400,
+                        'status_code': 203,
                         }
                     )
 

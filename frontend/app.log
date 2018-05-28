@@ -124,3 +124,22 @@
 2018-05-27 21:45:18,378 - INFO - app.py - get_request - 34 - Add task to queue successfully
 2018-05-27 21:45:25,479 - INFO - app.py - get_job_status - 71 - Invalid job id.
 2018-05-27 22:11:22,949 - INFO - app.py - get_job_status - 71 - Invalid job id.
+2018-05-27 22:13:46,275 - INFO - app.py - get_job_status - 71 - Invalid job id.
+2018-05-27 22:20:24,575 - INFO - app.py - get_job_status - 71 - Invalid job id.
+2018-05-27 22:20:26,587 - INFO - app.py - get_job_status - 71 - Invalid job id.
+2018-05-27 22:21:56,132 - INFO - app.py - get_job_status - 92 - check job 539018ce-4214-47bb-856e-b9513f0437f2
+2018-05-27 22:21:58,143 - INFO - app.py - get_job_status - 92 - check job 539018ce-4214-47bb-856e-b9513f0437f2
+2018-05-27 22:22:06,147 - INFO - app.py - get_job_status - 71 - Invalid job id.
+2018-05-27 22:23:03,068 - INFO - app.py - get_job_status - 71 - Invalid job id.
+2018-05-27 22:23:08,830 - INFO - app.py - get_job_status - 71 - Invalid job id.
+2018-05-27 22:27:00,326 - INFO - app.py - get_request - 34 - Add task to queue successfully
+2018-05-27 22:27:09,408 - INFO - app.py - get_request - 34 - Add task to queue successfully
+2018-05-27 22:27:25,225 - INFO - app.py - get_request - 34 - Add task to queue successfully
+2018-05-27 22:27:56,640 - INFO - app.py - get_job_status - 71 - Invalid job id.
+2018-05-27 22:28:38,544 - INFO - app.py - get_job_status - 71 - Invalid job id.
+2018-05-27 22:28:50,626 - INFO - app.py - get_job_status - 71 - Invalid job id.
+2018-05-27 22:43:25,571 - INFO - app.py - get_job_status - 71 - Invalid job id.
+2018-05-27 22:43:40,202 - INFO - app.py - get_job_status - 92 - check job 40764c04-3fcc-4609-95e7-a1c650abd17e
+2018-05-28 00:07:33,446 - INFO - app.py - get_request - 34 - Add task to queue successfully
+2018-05-28 00:07:33,453 - INFO - app.py - get_job_status - 71 - Invalid job id.
+2018-05-28 00:07:35,464 - INFO - app.py - get_job_status - 71 - Invalid job id.
