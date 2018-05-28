@@ -35,9 +35,9 @@ requests are passed to remaining providers without affecting clients.
 
 ## Table of Contents
 
-[Quick start](#Quick_start)
+[Quick start](#quick_start)
 - [Use the email service](#Use_the_email_service)
-- [Set up your own yaes](Set_up_your_own_yaes)
+- [Set up your own yaes](#Set_up_your_own_yaes)
 
 [Design](#Design)
 - [Job and Worker](#Job_and_Worker)
