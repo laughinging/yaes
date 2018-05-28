@@ -245,7 +245,7 @@ backend
 - **automatically check mail format** 
 Now all the HTTP POST requests are submitted to the task queue and later
 processes by at least one service provider. It would be efficient if malformed
-emails can be filtered out at the very beginning. Currently, I only use 'email'
+emails can be filtered out at the very beginning. Currently, I only use an 'email'
 label in `index.html` to check wether the email address is valid.
 
 - **automatically add/remove service provider**
