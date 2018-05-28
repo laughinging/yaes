@@ -30,39 +30,36 @@ requests are passed to remaining providers without affecting clients.
 - **Reliability:** Valid email could be sent eventually until there is no email
   provider available.  The controller of yaes is composed of processing queue,
   failed queue and a provider pool.  If an email is rejected due to temporary
-  server error, it is stored in the failed queue and can be handled later. All
-  providers in the pool are verified by timed verification job.  A provider will
-  be removed if the verification fails.
+  server error, it is stored in the failed queue and can be handled later.
 
 - **Separation:** The frontend and backend of yaes are separated. The communication
-  between frontend and backend is json-style post request. A webpage is provided
+  between frontend and backend is json-style post requests. A webpage is provided
   to generate and to verify this request.  
 
 - **Highspeed:** yaes is designed and implemented based on producer-consumer model.
   Each provider in the pool takes tasks when it is free.  Various providers can
-  be potentially added into the pool so that tasks are processed parallelly,
+  be potentially added into the pool so that tasks are parallel processed,
   which significantly improves processing speed. 
 
 - **Availability:** Clients can submit tasks directly on the website or use json
   requests. The task queue can be monitored with command line tools or a
   dashboard in browser.
 
-- **Flexibility:** If one server provider is currently unavailable, it is removed
-  from the provider pool. The add and remove API of provider pool are provided
-  as well.
-
+- **Flexibility:** If one server provider is currently unavailable, it is
+  removed from the provider pool temporarily for checking. The add and remove API of
+  provider pool are provided as well.
 
 ## Quick start
 
 ### Use the email service
 
-The Web Frontend provides two functions ```submit email task``` and ```check
-job status```. For submitting, simply fill in the contents and submit. Valid email will
-be added to the task queue and wait to be sent. A job id is returned on the Web
-Frontend for tracking the job status.
+The Web Frontend provides two functions ```submit email task``` and ```check job
+status```. For submitting, simply fill in the contents and submit. Valid emails
+will be added to the task queue and wait to be sent. A job id is returned on the
+Web Frontend for tracking the job status.
 
 The functions can be accessed with HTTP POST request. See
-```frontend/client.py``` as an example.
+```frontend/example_client.py``` for details.
 
 **submit email task**
 
@@ -75,7 +72,7 @@ The functions can be accessed with HTTP POST request. See
     body
 }
 ```
-The HTTP POST request will return one of the following status:
+The HTTP POST request returns one of the following status:
 ```
 200: Email add to queue successfully.
 500: Service not available.
@@ -89,7 +86,7 @@ The HTTP POST request will return one of the following status:
     job_id
 }
 ```
-The HTTP POST request will return one of the following status:
+The HTTP POST request returns one of the following status:
 ```
 200: job finished
 201: job in queue
@@ -161,7 +158,7 @@ yaes is a typical provider-consumer application. The Web frontend takes into
 email tasks and stores in redis queue, as the job provider. The backend workers
 get jobs from the redis queue and call corresponding functions to finish the
 task, as the job consumer. Other tasks can also be queued in this system. For
-example, manually update email provider pool.
+example, manually updating email service provider pool.
 
 ### Job and Worker
 #### Send email
@@ -282,6 +279,4 @@ intergrate redis server status in python unittests.
 - Backend track (with minimal frontend)
 - Python (fluent)
 - Flask, Redis(limited knowledge and experience)
-- Google cloud (experienced)
-
-
+- Google cloud platform(experienced)
