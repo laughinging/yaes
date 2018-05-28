@@ -147,21 +147,7 @@ rq-dashboard
 The available providers are stored in redis as ```provider_pool```. 
 
 
-#### Test
-Tests are implemented for most of the units. Check ```test_*.py``` files for
-details. Briefly, I have checked the following cases.
 
-frontend
-
- * invalid email address - rejcted immediately before add to the task queue
-
-backend
-
- * redis server fails - raise server error
- * no available provides - raise server error 
- * bad email request - raise client error for clients
- * email not sent due to provider issues - raise server error for clients, 
- raise service provider error for backend users.
 
 ## Design
 
@@ -236,6 +222,22 @@ yaes listens to two task queues with different priorities.
 - update provide pool (high)
 
 As for a real world application, it is possible to intergrate other tasks.
+
+## Test
+Tests are implemented for most of the units. Check ```test_*.py``` files for
+details. Briefly, I have checked the following cases.
+
+frontend
+
+ * invalid email address - rejcted immediately before add to the task queue
+
+backend
+
+ * redis server fails - raise server error
+ * no available provides - raise server error 
+ * bad email request - raise client error for clients
+ * email not sent due to provider issues - raise server error for clients, 
+ raise service provider error for backend users.
 
 
 ## If I had more time, I would have ...
