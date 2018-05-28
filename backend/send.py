@@ -35,6 +35,6 @@ def send_mail(*args, **kwargs):
 
 if __name__ == "__main__":
     send_mail(sender="test@test.com", 
-            recipient="qianyunguo@gmail.com",
-            subject="test",
+            recipient="test@test.com",
+            subject="test subject",
             body="This is a test email.")

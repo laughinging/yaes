@@ -224,23 +224,30 @@ yaes listens to two task queues with different priorities.
 As for a real world application, it is possible to intergrate other tasks.
 
 ## Test
-Tests are implemented for most of the units. Check ```test_*.py``` files for
-details. Briefly, I have checked the following cases.
+Tests are implemented for most of the units - whether the unit returns correct
+result or raise proper error. Briefly, I have checked the following cases. 
+
 
 frontend
-
- * invalid email address - rejcted immediately before add to the task queue
+ * valid email address?
+    * No - rejcted immediately before add to the task queue
+    * Yes - add to task queue ?
+        * Yes - return job id
+        * No - raise server error
 
 backend
+ * redis server working?
+    * No - raise server error
+    * Yes - worker setted ?
+        * No - emails are waiting in the queue
+        * Yes - emails handled by workers. sent successful?
+            * Yes - mark job as finished. 
+            * No - error due to client?
+                * Yes - mark job as failed with client error.
+                * No - mark job as failed with service error. raise server
+                  error. 
 
- * redis server fails - raise server error
- * no available provides - raise server error 
- * bad email request - raise client error for clients
- * email not sent due to provider issues - raise server error for clients, 
- raise service provider error for backend users.
-
-
-## If I had more time, I would have ...
+## If I had more time, I would have implemented...
 
 - **automatically check mail format** 
 Now all the HTTP POST requests are submitted to the task queue and later
@@ -252,10 +259,12 @@ label in `index.html` to check wether the email address is valid.
 It is possible to use timed varification to check the service provider status
 and add/remove automatically.
 
-- **atomatically deal with failed jobs**
+- **automatically deal with failed jobs**
 The failed jobs are stored in a 'failed' queue with error type. It is possible
 to deal with these jobs according to their error types, i.e, re-try those jobs
 that are failed due to temperary server errors, discard those with client errors.
+
+- **automated tests**
 
 ## About the project
 

@@ -53,7 +53,7 @@ class SendgridMail(object):
 if __name__ == "__main__":
     SendgridMail().send_mail(
             sender="test@test.com",
-            recipient="qianyunguo@gmail.com", 
+            recipient="test@test.com", 
             subject="test", 
             body="This is a test email."
             )
