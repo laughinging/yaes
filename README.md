@@ -19,7 +19,7 @@ Service available at [35.204.58.232:8888](http://35.204.58.232:8888/)
       * [Update provider pool](#update-provider-pool)
    * [Queue](#queue)
 * [Test](#test)
-* [If I had more time, I would have ...](#if-i-had-more-time-i-would-have-)
+* [If I had more time, I would have implemented...](#if-i-had-more-time-i-would-have-implemented-)
 * [About the project](#about-the-project)
 
 ## Overview 
