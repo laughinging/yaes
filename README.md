@@ -234,11 +234,9 @@ correct result or raise proper error. Please check ```test_app.py``` and
 Briefly, I have checked the following cases. 
 
 frontend
- * valid email address?
-    * No - rejcted immediately before add to the task queue
-    * Yes - add to task queue ?
-        * Yes - return job id
-        * No - raise server error
+ * submit email items
+    * Success? - return a job id
+    * Failed? - raise server error
 
 backend
  * redis server working?
@@ -257,8 +255,17 @@ backend
 - **automatically check mail format:** 
 Now all the HTTP POST requests are submitted to the task queue and later
 processes by at least one service provider. It would be efficient if malformed
-emails can be filtered out at the very beginning. Currently, I only use an 'email'
-label in `index.html` to check wether the email address is valid.
+emails can be filtered out at the very beginning:
+
+frontend
+ * valid email address?
+    * No - rejcted immediately before add to the task queue
+    * Yes - add to task queue ?
+        * Yes - return job id
+        * No - raise server errord
+        
+I tried with 'email' labels in HTML templates, but failed to combine them with
+click event in ajex.
 
 - **automatically add/remove service provider:** 
 It is possible to use timed varification to check the service provider status
